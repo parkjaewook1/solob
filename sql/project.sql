@@ -1,5 +1,6 @@
 USE solob;
 
+
 CREATE TABLE board
 (
     id       INT PRIMARY KEY AUTO_INCREMENT,
