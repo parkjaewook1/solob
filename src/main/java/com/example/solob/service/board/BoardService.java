@@ -1,6 +1,6 @@
-package com.example.solob.service;
+package com.example.solob.service.board;
 
-import com.example.solob.domain.Board;
+import com.example.solob.domain.board.Board;
 import com.example.solob.mapper.BoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

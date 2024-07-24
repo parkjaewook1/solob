@@ -1,7 +1,7 @@
-package com.example.solob.controller;
+package com.example.solob.controller.board;
 
-import com.example.solob.domain.Board;
-import com.example.solob.service.BoardService;
+import com.example.solob.domain.board.Board;
+import com.example.solob.service.board.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

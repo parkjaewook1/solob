@@ -1,6 +1,6 @@
 package com.example.solob.mapper;
 
-import com.example.solob.domain.Board;
+import com.example.solob.domain.board.Board;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

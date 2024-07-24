@@ -1,4 +1,4 @@
-package com.example.solob.domain;
+package com.example.solob.domain.board;
 
 import lombok.Data;
 
