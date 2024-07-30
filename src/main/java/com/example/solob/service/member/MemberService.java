@@ -45,7 +45,7 @@ public class MemberService {
         }
         String emailPattern = "[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*";
 
-        if (member.getEmail().trim().matches(emailPattern)) {
+        if (!member.getEmail().trim().matches(emailPattern)) {
             return false;
         }
 
@@ -62,5 +62,14 @@ public class MemberService {
 
     public void remove(Integer id) {
         mapper.deleteById(id);
+    }
+
+    public boolean hasAccess(Member member) {
+        Member dbMember = mapper.selectById(member.getId());
+
+        if (dbMember == null) {
+            return false;
+        }
+        return passwordEncoder.matches(member.getPassword(), dbMember.getPassword());
     }
 }

@@ -43,7 +43,8 @@ public interface MemberMapper {
             SELECT id,
                    email,
                    nick_name,
-                   inserted
+                   inserted,
+                   password
             FROM member
             WHERE id = #{id}
             """)
