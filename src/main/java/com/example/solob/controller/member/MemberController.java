@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -62,12 +63,30 @@ public class MemberController {
 
     @DeleteMapping("{id}")
     public ResponseEntity delete(
-            @PathVariable Integer id,
             @RequestBody Member member) {
         if (service.hasAccess(member)) {
             service.remove(member.getId());
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    }
+
+    @PutMapping("edit")
+    public ResponseEntity edit(@RequestBody Member member) {
+        if (service.hasAccessEdit(member)) {
+            service.edit(member);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
+    }
+
+    @PostMapping("token")
+    public ResponseEntity token(@RequestBody Member member) {
+        Map<String, Object> map = service.getToken(member);
+        if (map == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        return ResponseEntity.ok(map);
     }
 }
